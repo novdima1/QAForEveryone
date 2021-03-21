@@ -9,18 +9,40 @@ Home_work_2, Week 2, 17 March 2021
 """
 
 # 1
+# Variant 1
 def print_sp_list():
     N = 5 #int(input("Enter a number\n"))
     A = [x for x in range(N) if x != 0 if x != 4 if x != 5]
     print(A)
 print_sp_list()
 
+# Variant 2
 list = list(range(10))
 print(list)
 list.pop(0)
 list.pop(3)
 list.pop(3)
 print(list)
+
+# Variant 2 with list length validation
+def remove_elements_by_indexes_from_list(list, indexes):
+    indexes = indexes.split(",")
+    int_indexes = []
+    for i in indexes:
+        int_indexes.append(int(i))
+    int_indexes.sort(reverse=True)
+    for i in int_indexes:
+        if len(list) > i:
+            list.remove(list[i])
+        else:
+            continue
+    return list
+
+list = [1,2,4,3,5]
+indexes = "1,2,3,33,44,4"
+final_list = remove_elements_by_indexes_from_list(list, indexes)
+print(final_list)
+
 
 # 2
 # list = list(range(10)) # -> TypeError: 'list' object is not callable
@@ -62,6 +84,7 @@ print(numbers.subt())
 print(numbers.mult())
 print(numbers.div())
 
+
 # 4
 def str_or_int(a, b):
     a = int(a)
@@ -87,6 +110,7 @@ list_min = min(list)
 list_max = max(list)
 list = [x for x in list if x != list_min if x != list_max]
 print(f"Original list: {origin_list}", f"\nFinal list: {list}")
+
 
 # 6
 list = ['b', 'n', 'A', 'g', 'S', 'p', 'm', 'r', 'R', 'X', 'z', 'B', 'I', 'H', 'A', 'e', 't', 'k', 'k', 'k', 'l', 'c', 'g', 'S', 'P', 'q', 'Y', 'Q']
