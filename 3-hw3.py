@@ -42,7 +42,7 @@ print(indices_of_all_occurrences([1,'f',3,'f',3], 'f'))
 def get_length_of_number(out):
     return sum(not out not in out for out in str(out))
 
-print(get_length_of_number(1231))
+print(get_length_of_number(124310))
 
 #4
 def invert_key_value(dict):
@@ -54,24 +54,69 @@ print(invert_key_value({1:2, 3:4}))
 class Person:
 
     def __init__(self, f_name, l_name):
-        self.f_name = f_name
-        self.l_name = l_name
+        self.__f_name = f_name
+        self.__l_name = l_name
 
+    @property
     def first_name(self):
-        return self.f_name.capitalize()
+        return self.__f_name.capitalize()
+
+    @first_name.setter
+    def first_name(self, first_name):
+        self.__f_name = first_name
 
     def last_name(self):
-        return self.l_name.capitalize()
+        return self.__l_name.capitalize()
 
     def full_name(self):
-        return f"{self.f_name.capitalize()} {self.l_name.capitalize()}"
+        return f"{self.__f_name.capitalize()} {self.__l_name.capitalize()}"
 
     def initials(self):
-        return f"{self.f_name.capitalize()[0]}.{self.l_name.capitalize()[0]}."
+        return f"{self.__f_name.capitalize()[0]}." \
+               f"{self.__l_name.capitalize()[0]}."
+
+
+class Casino:
+    visitors = {}
+    id = 0
+
+    def __init__(self, name):
+        self.name = name
+
+    def add_visitor(self, visitor):
+        self.visitors[self.id] = visitor
+        self.id +=1
+
+    def get_info(self):
+        print(f"Casino {self.name} contains {self.visitors}")
+
+    def get_number_of_visitors(self):
+        print(self.id)
+
+    def __repr__(self):
+        return f'Casino {self.name} '
 
 
 person = Person('anN', 'ROBson')
-print(person.first_name())
+person2 = Person('lola', 'bee')
+print(person.first_name)
 print(person.last_name())
 print(person.full_name())
 print(person.initials())
+
+palace = Casino("Golden Palace")
+person.first_name = 'albert'
+palace.add_visitor(person.full_name())
+palace.add_visitor(person2.full_name())
+palace.get_info()
+palace.get_number_of_visitors()
+
+print(person.__repr__())
+print(person2.__repr__())
+print(person.__dict__)
+print(palace.__dict__)
+
+casino2 = Casino("Shazam")
+casino3 = Casino("Shazam")
+print(casino2.__repr__())
+print(casino3.__repr__())
