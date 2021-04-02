@@ -9,16 +9,22 @@ User should be able:
 """
 
 class Account:
-    __PIN = "1234"
-    __BALANCE = 0
+
+    def __init__(self, pin='1234', balance=0, s_balance=1000):
+        self.__pin = pin
+        self.__balance = balance
+        self.s_balance = s_balance
 
     def check_balance(self):
-        print(self.__class__.__BALANCE)
-        return self.__class__.__BALANCE
+        print(self.__balance)
+
+    def check_secret_balance(self):
+        print(self.s_balance)
 
     def add_money(self, amount):
         if amount > 1:
-            self.__class__.__BALANCE += amount
+            self.__balance += amount
+            print(f"{amount}$ has been added to your balance")
         else:
             print("Amount should be greater than 1$")
 
@@ -26,11 +32,11 @@ class Account:
         i = 3
         while i > 0:
             pin = input("Enter pin: ")
-            if pin == self.__class__.__PIN:
-                if amount <= self.__class__.__BALANCE:
-                    self.__class__.__BALANCE -= amount
-                    print(f"Take your {amount}$. Rest: {self.__class__.__BALANCE}")
-                    return None
+            if pin == self.__pin:
+                if amount <= self.__balance:
+                    self.__balance -= amount
+                    print(f"Take your {amount}$. Rest: {self.__balance}")
+                    return self.__balance
                 else:
                     print("Not enough money")
             else:
@@ -45,8 +51,15 @@ acc.add_money(-50)
 acc.withdraw(20)
 acc.check_balance()
 
-acc1 = Account()
+acc1 = Account('4321')
 acc1.add_money(100)
 acc1.add_money(-50)
 acc1.withdraw(20)
 acc1.check_balance()
+acc1.s_balance = 2000
+print(acc1.s_balance)
+acc1.__balance = 3000
+print(acc1.__balance)
+acc1.check_balance()
+acc1.check_secret_balance()
+
