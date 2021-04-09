@@ -27,24 +27,21 @@ class Account:
             print(f"{amount}$ has been added to your balance")
         else:
             print("Amount should be greater than 1$")
+        return self.__balance
 
-    def withdraw(self, amount):
-        i = 3
-        while i > 0:
-            pin = input("Enter pin: ")
-            if pin == self.__pin:
-                if amount <= self.__balance:
-                    self.__balance -= amount
-                    print(f"Take your {amount}$. Rest: {self.__balance}")
-                    return self.__balance
-                else:
-                    print("Not enough money")
+    def withdraw(self, amount, pin):
+        if pin == self.__pin:
+            if amount <= self.__balance and amount > 0:
+                self.__balance -= amount
+                print(f"Take your {amount}$. Rest: {self.__balance}")
+                return self.__balance
             else:
-                print("Wrong pin!")
-                i -= 1
-        print("Your accout locked!")
+                print("Not enough money")
+        else:
+            print("Wrong pin!")
+            return None
 
-
+"""
 acc = Account()
 acc.add_money(100)
 acc.add_money(-50)
@@ -62,4 +59,4 @@ acc1.__balance = 3000
 print(acc1.__balance)
 acc1.check_balance()
 acc1.check_secret_balance()
-
+"""
