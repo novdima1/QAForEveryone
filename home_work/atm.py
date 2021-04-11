@@ -41,6 +41,10 @@ class Account:
             print("Wrong pin!")
             return None
 
+    def get_pin_length(self):
+        pin = self.__pin
+        return len(pin)
+
 """
 acc = Account()
 acc.add_money(100)
