@@ -10,3 +10,33 @@ results = {
     "result": 700,
     "pin_length": 4
 }
+
+contributions = [
+                     {
+                        "startsOn":"2000-01-01",
+                        "value":{
+                           "currency":"GBP",
+                           "amount": 100
+                        },
+                        "frequency":"Single",
+                        "type":"LumpSum"
+                     },
+                     {
+                        "startsOn":"2000-01-01",
+                        "value":{
+                           "currency": "GBP",
+                           "amount": 200
+                        },
+                        "frequency":"Monthly",
+                        "type":"Regular"
+                     },
+                     {
+                        "startsOn":"2000-01-01",
+                        "value":{
+                           "currency":"GBP",
+                           "amount": 300
+                        },
+                        "frequency":"Single",
+                        "type":"Transfer"
+                     }
+                  ]
