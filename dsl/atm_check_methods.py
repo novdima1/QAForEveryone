@@ -1,5 +1,5 @@
 from home_work.atm import Account
-from data import atm_data, results
+from data import atm_data, results, contributions
 
 class Atm(Account):
 
@@ -25,4 +25,13 @@ class Atm(Account):
         pin_length = self.get_pin_length()
         assert pin_length == results["pin_length"]
         print("Pin length checked")
+        return self
+
+    def verify_contribution_amounts_are_correct(self):
+        data = contributions
+        amount = 100
+        contribution_types = ["Single", "Regular", "Transfer"]
+        for i in range(len(data)):
+            assert amount == data[i]["value"]["amount"], f"{contribution_types[i]} contribution amount is incorrect"
+            amount += 100
         return self
