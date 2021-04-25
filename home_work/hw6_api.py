@@ -93,7 +93,6 @@ class RestfulBookerAPI:
             "additionalneeds": "Breakfast"
         }
         r = requests.put(url, data=json.dumps(payload), headers=headers)
-
         # actual_result = r.json()["totalprice"]
         # expected_result = 22222,
         # assert actual_result == expected_result, f"Actual result: {actual_result}, Expected result: {expected_result}"
@@ -195,3 +194,13 @@ class SwaggerPet:
         self.pet_name = actual_name
         return self
 
+    def delete_item(self, id):
+        url = f"https://petstore.swagger.io/v2/pet/{id}"
+        r = requests.delete(url)
+        status_code = r.status_code
+        if status_code == 200:
+            assert status_code == 200, f"Status code: {status_code}"
+            print("Object removed successfully")
+        else:
+            assert status_code == 404, f"Status code: {status_code}"
+            print("Object not found")

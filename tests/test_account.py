@@ -68,3 +68,4 @@ def test_swagger_pet():
     test = test.change_name()
     current_name = test.pet_name
     assert previous_name != current_name
+    test.delete_item(id)
