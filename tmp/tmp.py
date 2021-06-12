@@ -1,14 +1,24 @@
-class A:
-    def a(self):
-        return 'a'
+class Color:
+    def __init__(self):
+        # object attributes
+        self.name = 'Default Color'
+        self.lg = self.Lightgreen()
 
-    def b(self):
-        return 'b'
+    def show(self):
+        print("Name:", self.name)
 
-    def c(self):
-        return 'c'
+    class Lightgreen:
+        def __init__(self):
+            self.name = 'Light Green'
+            self.code = '024avc'
+
+        def display(self):
+            print("Name1:", self.name)
+            print("Code1:", self.code)
 
 
-obj = A()
-fun = [obj.a(), obj.b(), obj.c()]
-print(fun)
+class Canvas(Color):
+    pass
+
+canvas = Canvas()
+canvas.lg.display()
