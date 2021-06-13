@@ -22,3 +22,8 @@ class Canvas(Color):
 
 canvas = Canvas()
 canvas.lg.display()
+
+# Change 1
+# Change 2
+# Change 3.1
+
